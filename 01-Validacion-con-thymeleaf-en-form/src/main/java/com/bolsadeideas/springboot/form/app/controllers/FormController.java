@@ -17,6 +17,7 @@ import com.bolsadeideas.springboot.form.app.models.domain.Usuario;
 import com.bolsadeideas.springboot.form.app.validation.UsuarioValidador;
 
 @Controller
+/*Agregamos la anotacion @SessionAttributes para hacer persistente el objeto usuario*/
 @SessionAttributes("usuario")
 public class FormController {
 	
@@ -52,7 +53,10 @@ public class FormController {
 		}
 		
 		model.addAttribute("usuario", usuario);
-        status.setComplete();
+        /* setComplete:: completa el proceso y elimina el usuario de la sesion
+         * @SessionAttributes("usuario")
+         * */
+		status.setComplete();
 		return "resultado";
 	}
 
