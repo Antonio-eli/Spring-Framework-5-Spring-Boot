@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title th:text="${titulo}"></title>
+</head>
+<body>
+	<div class="container">
+        <main>
+            <div class="row g-5">
+                <div class="col-md-6 col-lg-12 order-md-last">
+                    <h1 class="d-flex justify-content-between align-items-center mb-3">
+                        <span class="text-primary" th:text="${titulo}"></span>
+                    </h1>
+                    <ul class="list-group mb-3" th:if="${usuarios.size()==0}">
+                        <li class="list-group-item d-flex justify-content-between lh-sm">
+                            <div>
+                                <h2 class="my-0">No hay usuarios en la lista.</h2>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

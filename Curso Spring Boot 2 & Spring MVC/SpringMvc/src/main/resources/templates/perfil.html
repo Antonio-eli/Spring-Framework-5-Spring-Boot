@@ -13,14 +13,22 @@
 	                <h2 class="mb-3 " th:text="${titulo}"></h2>
 	                <form class="needs-validation" novalidate >
 	                    <div class="row g-3">
-	                        <div class="col-sm-6">
-	                            <label for="firstName" class="form-label">Nombre</label>
-	                            <input type="text" class="form-control" id="firstName" placeholder="" value="" required th:field="${usuario.nombre}">
+	                        <div class="col-sm-6 col-md-4">
+	                            <label for="Nombre" class="form-label">Nombre</label>
+	                            <input type="text" class="form-control" id="" placeholder="" value="" required th:field="${usuario.nombre}">
 	                        </div>
 	
-	                        <div class="col-sm-6">
-	                            <label for="lastName" class="form-label">Apellido</label>
-	                            <input type="text" class="form-control" id="lastName" placeholder="" value="" required th:field="${usuario.apellido}">
+	                        <div class="col-sm-6 col-md-4">
+	                            <label for="Apellido" class="form-label">Apellido</label>
+	                            <input type="text" class="form-control" id="" placeholder="" value="" required th:field="${usuario.apellido}">
+	                        </div>
+	                        <div class="col-sm-6 col-md-4" th:if="${usuario.email}">
+	                            <label for="Email" class="form-label">Email</label>
+	                            <input type="text" class="form-control" id="" placeholder="" value="" required th:field="${usuario.email}">
+	                        </div>
+	                        <div class="col-sm-6 col-md-4" th:if="${usuario.email == null}">
+	                            <label for="Email" class="form-label">Email</label>
+	                            <input type="text" class="form-control" id="" placeholder="El usuario no tiene correo" value="" >
 	                        </div>
 	               	 	</div>
 	                </form>
