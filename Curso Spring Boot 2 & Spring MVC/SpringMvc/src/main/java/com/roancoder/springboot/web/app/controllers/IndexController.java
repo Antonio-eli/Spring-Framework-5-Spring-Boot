@@ -38,6 +38,7 @@ public class IndexController {
 		return "listar";
 	}
 	
+
 	@ModelAttribute("usuarios")
 	public List<Usuario> poblarUsuarios(){
 		List<Usuario> usuarios = Arrays.asList(
