@@ -24,7 +24,6 @@
                     <table class="table table-hover table-bordered" th:if="${!usuarios.isEmpty()}">
 					  <thead>
 					    <tr>
-					      <th scope="col">#</th>
 					      <th scope="col">Nombre</th>
 					      <th scope="col">Apellido</th>
 					      <th scope="col">Email</th>
@@ -32,7 +31,6 @@
 					  </thead>
 					  <tbody>
 					    <tr th:each="usuario: ${usuarios}">
-					      <th scope="row">1</th>
 					      <td th:text="${usuario.nombre}"></td>
 					      <td th:text="${usuario.apellido}"></td>
 					      <td th:text="${usuario.email}"></td>
