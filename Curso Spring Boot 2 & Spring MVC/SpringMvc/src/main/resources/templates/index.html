@@ -2,9 +2,14 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8" />
+<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" >
 <title th:text="${titulo}"></title>
 </head>
 <body>
-	<h1 th:text="${titulo}"></h1>
+	<h1 class="color-verde" th:text="${titulo}"></h1>
+	<h2 class="color-azul">Enlazando archivo css</h2>
+	<div style="text-align: center;">
+		<img width="400" th:src="@{/img/spring.png}">
+	</div>
 </body>
 </html>

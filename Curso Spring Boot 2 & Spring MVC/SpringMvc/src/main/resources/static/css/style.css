@@ -1,0 +1,18 @@
+body {
+  margin: auto;
+  width: 640px; 
+  padding: 50px;
+  font-family: 'Avenir', sans-serif; 
+  color: #33475b;    
+      }
+
+img{
+  padding: 10px; 
+}
+
+.color-verde{
+	color: #117864 ;
+}
+.color-azul{
+	color: #21618C ;
+}
