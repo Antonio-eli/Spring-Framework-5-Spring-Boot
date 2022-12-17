@@ -15,6 +15,12 @@
 		  <li class="list-group-item">
 		  	<a th:href="@{/params/string(texto='Que tal, como te va')}">/params/string?texto=Que tal, como te va</a>
 		  </li>
+		  <li class="list-group-item">
+		  	<a th:href="@{/params/mix-params(saludo='Como estas cheo', numero=16)}">/params/mix-params?saludo=Como estas cheo&numero=16</a>
+		  </li>
+		  <li class="list-group-item">
+		  	<a th:href="@{/params/mix-params-request(saludo='Como estas cheo', numero=16)}">/params/mix-params-request?saludo=Como estas cheo&numero=16</a>
+		  </li>
 		</ul>
 	</div>	
 	
