@@ -6,12 +6,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import com.roancoder.springboot.di.app.models.service.IServicio;
-import com.roancoder.springboot.di.app.models.service.MiServicio;
 
 @Controller
 public class IndexController {
 
-	
 	@Autowired
 	private IServicio servicio; 
 	
@@ -21,4 +19,7 @@ public class IndexController {
 		model.addAttribute("titulo", "Inyección de Dependencias");
 		return "index";
 	}
+
+	
+	
 }
