@@ -12,7 +12,6 @@ import com.roancoder.springboot.di.app.models.service.IServicio;
 public class IndexController {
 
 	@Autowired
-	@Qualifier("miServicioPrincipal")
 	private IServicio servicio; 
 	
 	@GetMapping({"/", "", "/index"})
