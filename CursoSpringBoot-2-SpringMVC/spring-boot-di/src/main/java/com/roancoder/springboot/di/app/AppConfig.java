@@ -27,19 +27,29 @@ public class AppConfig {
     	return new MiServicioComplejo();
     }
     
-    @Bean("itemsFacturaOficina")
+    @Bean("itemsFactura")
 	List<ItemFactura> registrarItems(){
-		Producto producto1 = new Producto("Monitor LG LCD 24", 250);
-		Producto producto2 = new Producto("Notebook Asus", 500);
-		Producto producto3 = new Producto("Impresora HP Multifuncional", 80);
-		Producto producto4 = new Producto("Escritorio Oficina", 300);
+		Producto producto1 = new Producto("Cámara Instantánea Fujifilm Instax Mini 11", 50);
+		Producto producto2 = new Producto("Cámara Canon Modelo EOS", 100);
 		
 		ItemFactura linea1 = new ItemFactura(producto1, 2);
 		ItemFactura linea2 = new ItemFactura(producto2, 1);
-		ItemFactura linea3 = new ItemFactura(producto3, 1);
-		ItemFactura linea4 = new ItemFactura(producto4, 1);
 		
-		return Arrays.asList(linea1, linea2, linea3, linea4);
+		return Arrays.asList(linea1, linea2);
 	}
+    @Bean("itemsFacturaOficina")
+    List<ItemFactura> registrarItemsOficina(){
+    	Producto producto1 = new Producto("Monitor LG LCD 24", 250);
+    	Producto producto2 = new Producto("Notebook Asus", 500);
+    	Producto producto3 = new Producto("Impresora HP Multifuncional", 80);
+    	Producto producto4 = new Producto("Escritorio Oficina", 300);
+    	
+    	ItemFactura linea1 = new ItemFactura(producto1, 2);
+    	ItemFactura linea2 = new ItemFactura(producto2, 1);
+    	ItemFactura linea3 = new ItemFactura(producto3, 1);
+    	ItemFactura linea4 = new ItemFactura(producto4, 1);
+    	
+    	return Arrays.asList(linea1, linea2, linea3, linea4);
+    }
 
 }
