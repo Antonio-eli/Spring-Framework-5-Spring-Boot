@@ -7,7 +7,12 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
+import jakarta.annotation.PostConstruct;
+import jakarta.annotation.PreDestroy;
+import lombok.extern.slf4j.Slf4j;
+
 @Component
+@Slf4j
 public class Factura {
 	
 	@Value("${factura.descripcion}")
@@ -20,6 +25,16 @@ public class Factura {
 	@Qualifier("itemsFacturaOficina")
 	private List<ItemFactura> items;
 	
+	@PostConstruct
+	public void inicializar() {
+		cliente.setNombre(cliente.getNombre().concat(" ").concat("Antonio"));
+		descripcion = descripcion.concat(" del cliente: ").concat(cliente.getNombre());
+	}
+	
+	@PreDestroy
+	public void destruir() {
+		log.info("Factura destruida {}: ".concat(descripcion));
+	}
 	
 	public String getDescripcion() {
 		return descripcion;
