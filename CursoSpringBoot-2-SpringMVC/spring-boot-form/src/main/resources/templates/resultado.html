@@ -11,13 +11,24 @@
     <title th:text="${titulo}"></title>
   </head>
   <body>
-    <div class="container">
+    <div class="container py-3">
     	<h2 th:text="${titulo}"></h2>
-		<ul class="list-group">
-		  <li class="list-group-item" th:text="username"></li>
-		  <li class="list-group-item" th:text="password"></li>
-		  <li class="list-group-item" th:text="email"></li>
-		</ul>
+		<table class="table">
+		  <thead>
+		    <tr>
+		      <th scope="col">username</th>
+		      <th scope="col">password</th>
+		      <th scope="col">email</th>
+		    </tr>
+		  </thead>
+		  <tbody>
+		    <tr>
+		      <td th:text="${username}"></td>
+		      <td th:text="${password}"></td>
+		      <td th:text="${email}"></td>
+		    </tr>
+		  </tbody>
+		</table>
 	</div>
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
