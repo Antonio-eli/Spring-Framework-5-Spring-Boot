@@ -1,6 +1,7 @@
 package com.roancoder.springboot.form.app.models.domain;
 
 import com.roancoder.springboot.form.app.validation.IdentificadorRegex;
+import com.roancoder.springboot.form.app.validation.Requerido;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -18,14 +19,16 @@ public class Usuario {
 	private String identificador;
 	//@NotEmpty(message = "El campo nombre no puede estar vacio")
 	private String nombre;
-	@NotEmpty
+	//@NotEmpty
+	@Requerido
 	private String apellido;
 	@NotBlank
 	@Size(min = 3, max = 8)
 	private String username;
 	@NotEmpty
 	private String password;
-	@NotEmpty
+	//@NotEmpty
+	@Requerido
 	@Email(message = "El formato del email no es valido")
 	private String email;
 }
