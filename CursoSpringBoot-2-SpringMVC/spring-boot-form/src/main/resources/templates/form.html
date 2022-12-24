@@ -20,6 +20,16 @@
 		    <div class="alert alert-danger my-3" role="alert" th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></div>
 		  </div>
 		  <div class="mb-3">
+		    <label for="nombre" class="form-label">Nombre</label>
+		    <input type="text" class="form-control" id="nombre" aria-describedby="nombre" th:field="*{nombre}">
+		    <div class="alert alert-danger my-3" role="alert" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></div>
+		  </div>
+		  <div class="mb-3">
+		    <label for="apellido" class="form-label">Apellido</label>
+		    <input type="text" class="form-control" id="apellido" aria-describedby="apellido" th:field="*{apellido}">
+		    <div class="alert alert-danger my-3" role="alert" th:if="${#fields.hasErrors('apellido')}" th:errors="*{apellido}"></div>
+		  </div>
+		  <div class="mb-3">
 		    <label for="password" class="form-label">Password</label>
 		    <input type="password" class="form-control" id="password" th:field="*{password}">
 		    <div class="alert alert-danger my-3" role="alert" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></div>

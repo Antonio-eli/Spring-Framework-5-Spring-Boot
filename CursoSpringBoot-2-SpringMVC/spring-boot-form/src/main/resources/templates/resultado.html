@@ -16,14 +16,20 @@
 		<table class="table">
 		  <thead>
 		    <tr>
-		      <th scope="col">username</th>
-		      <th scope="col">password</th>
-		      <th scope="col">email</th>
+		      <th scope="col">ID</th>
+		      <th scope="col">Username</th>
+		      <th scope="col">Nombre</th>
+		      <th scope="col">Apellido</th>
+		      <th scope="col">Password</th>
+		      <th scope="col">Email</th>
 		    </tr>
 		  </thead>
 		  <tbody>
 		    <tr>
+		      <td th:text="${usuario.identificador}"></td>
 		      <td th:text="${usuario.username}"></td>
+		      <td th:text="${usuario.nombre}"></td>
+		      <td th:text="${usuario.apellido}"></td>
 		      <td th:text="${usuario.password}"></td>
 		      <td th:text="${usuario.email}"></td>
 		    </tr>
