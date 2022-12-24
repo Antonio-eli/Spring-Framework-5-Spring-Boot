@@ -13,21 +13,21 @@
   <body>
     <div class="container py-3">
     	<h2 th:text="${titulo}"></h2>
-		<form th:action="@{/form}" method="post">
+		<form th:action="@{/form}" th:object="${usuario}" method="post">
 		  <div class="mb-3">
 		    <label for="username" class="form-label">Username</label>
-		    <input type="text" class="form-control" name="username" id="username" aria-describedby="username" th:value="${usuario.username}">
-		    <div class="alert alert-danger my-3" role="alert" th:if="${ error != null && error.containsKey('username')}" th:text="${error.username}"></div>
+		    <input type="text" class="form-control" id="username" aria-describedby="username" th:field="*{username}">
+		    <div class="alert alert-danger my-3" role="alert" th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></div>
 		  </div>
 		  <div class="mb-3">
 		    <label for="password" class="form-label">Password</label>
-		    <input type="password" class="form-control" name="password" id="password">
-		    <div class="alert alert-danger my-3" role="alert" th:if="${ error != null && error.containsKey('password')}" th:text="${error.password}"></div>
+		    <input type="password" class="form-control" id="password" th:field="*{password}">
+		    <div class="alert alert-danger my-3" role="alert" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></div>
 		  </div>
 		  <div class="mb-3">
 		    <label for="email" class="form-label">Email</label>
-		    <input type="text" class="form-control" name="email" id="email" th:value="${usuario.email}">
-		    <div class="alert alert-danger my-3" role="alert" th:if="${ error != null && error.containsKey('email')}" th:text="${error.email}"></div>
+		    <input type="text" class="form-control" id="email" th:field="*{email}">
+		    <div class="alert alert-danger my-3" role="alert"  th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>
 		  </div>
 		  
 		  <button type="submit" class="btn btn-primary">Submit</button>
