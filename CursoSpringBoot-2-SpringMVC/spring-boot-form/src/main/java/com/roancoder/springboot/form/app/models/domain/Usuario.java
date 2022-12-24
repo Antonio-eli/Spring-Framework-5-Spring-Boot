@@ -1,5 +1,7 @@
 package com.roancoder.springboot.form.app.models.domain;
 
+import com.roancoder.springboot.form.app.validation.IdentificadorRegex;
+
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
@@ -12,6 +14,7 @@ import lombok.Setter;
 @Setter
 public class Usuario {
 	//@Pattern(regexp = "[0-9]{2}[.][\\d]{3}[.][0-9]{3}[-][A-z]{1}")
+	@IdentificadorRegex
 	private String identificador;
 	//@NotEmpty(message = "El campo nombre no puede estar vacio")
 	private String nombre;
