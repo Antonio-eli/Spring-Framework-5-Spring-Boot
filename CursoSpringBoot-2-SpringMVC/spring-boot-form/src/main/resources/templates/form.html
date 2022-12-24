@@ -44,6 +44,11 @@
 		    <input type="text" class="form-control" id="email" th:field="*{email}">
 		    <div class="alert alert-danger my-3" role="alert"  th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>
 		  </div>
+		  <div class="mb-3">
+		    <label for="cuenta" class="form-label">Cuenta</label>
+		    <input type="number" class="form-control" id="cuenta" th:field="*{cuenta}">
+		    <div class="alert alert-danger my-3" role="alert"  th:if="${#fields.hasErrors('cuenta')}" th:errors="*{cuenta}"></div>
+		  </div>
 		  
 		  <button type="submit" class="btn btn-primary">Submit</button>
 		  

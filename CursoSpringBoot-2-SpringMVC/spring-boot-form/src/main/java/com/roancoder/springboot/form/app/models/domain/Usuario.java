@@ -4,8 +4,11 @@ import com.roancoder.springboot.form.app.validation.IdentificadorRegex;
 import com.roancoder.springboot.form.app.validation.Requerido;
 
 import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 //import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 import lombok.Getter;
@@ -31,4 +34,9 @@ public class Usuario {
 	@Requerido
 	@Email(message = "El formato del email no es valido")
 	private String email;
+	
+	@NotNull
+	@Min(5)
+	@Max(5000)
+	private Integer cuenta;
 }
