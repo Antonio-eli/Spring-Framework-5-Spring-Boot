@@ -49,6 +49,11 @@
 		    <input type="number" class="form-control" id="cuenta" th:field="*{cuenta}">
 		    <div class="alert alert-danger my-3" role="alert"  th:if="${#fields.hasErrors('cuenta')}" th:errors="*{cuenta}"></div>
 		  </div>
+		  <div class="mb-3">
+		    <label for="fechaNacimiento" class="form-label">Fecha nacimiento</label>
+		    <input type="text" class="form-control" id="fechaNacimiento" th:field="*{fechaNacimiento}" placeholder="yyyy-MM-dd">
+		    <div class="alert alert-danger my-3" role="alert"  th:if="${#fields.hasErrors('fechaNacimiento')}" th:errors="*{fechaNacimiento}"></div>
+		  </div>
 		  
 		  <button type="submit" class="btn btn-primary">Submit</button>
 		  
