@@ -7,6 +7,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import com.roancoder.springboot.form.app.validation.IdentificadorRegex;
 import com.roancoder.springboot.form.app.validation.Requerido;
 
+import jakarta.validation.Valid;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
@@ -50,6 +51,6 @@ public class Usuario {
 	//@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date fechaNacimiento;
 	
-	@NotEmpty
-	private String pais;
+	@Valid
+	private Pais pais;
 }
