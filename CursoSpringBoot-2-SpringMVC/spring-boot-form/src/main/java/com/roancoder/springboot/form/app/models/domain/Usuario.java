@@ -49,4 +49,7 @@ public class Usuario {
 	@Past
 	//@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date fechaNacimiento;
+	
+	@NotEmpty
+	private String pais;
 }
