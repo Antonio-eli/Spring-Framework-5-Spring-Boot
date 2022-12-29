@@ -36,7 +36,7 @@
 		      <td th:text="${usuario.password}"></td>
 		      <td th:text="${usuario.email}"></td>
 		      <td th:text="${usuario.cuenta}"></td>
-		      <td th:text="${usuario.fechaNacimiento}"></td>
+		      <td th:text="${#dates.format(usuario.fechaNacimiento, 'dd/MM/yyyy')}"></td>
 		      <td th:text="${usuario.pais}"></td>
 		    </tr>
 		  </tbody>
