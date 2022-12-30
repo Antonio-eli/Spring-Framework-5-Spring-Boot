@@ -30,6 +30,7 @@
 		      <th scope="col">Pais nombre</th>
 		      <th scope="col">Habilitar</th>
 		      <th scope="col">Roles</th>
+		      <th scope="col">Valor secreto</th>
 		    </tr>
 		  </thead>
 		  <tbody>
@@ -52,6 +53,7 @@
 					  <li th:each="role: ${usuario.roles}" th:text="${role.id} + ': ' + ${role.nombre} + ' -> ' + ${role.role}"></li>
 				  </ul>
 			  </td>
+			   <td th:text="${usuario.valorSecreto}"></td>
 		    </tr>
 		  </tbody>
 		</table>

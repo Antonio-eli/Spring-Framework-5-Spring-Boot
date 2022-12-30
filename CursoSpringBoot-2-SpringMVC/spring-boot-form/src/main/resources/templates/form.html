@@ -79,6 +79,9 @@
 		    <input type="date" class="form-control" id="fechaNacimiento" th:field="*{fechaNacimiento}" placeholder="yyyy-MM-dd">
 		    <div class="alert alert-danger my-3" role="alert"  th:if="${#fields.hasErrors('fechaNacimiento')}" th:errors="*{fechaNacimiento}"></div>
 		  </div>
+
+		  <input type="hidden" th:field="*{valorSecreto}">
+		    
 		  
 		  <button type="submit" class="btn btn-primary">Submit</button>
 		  

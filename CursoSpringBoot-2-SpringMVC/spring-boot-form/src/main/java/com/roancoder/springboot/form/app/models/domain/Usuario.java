@@ -61,4 +61,6 @@ public class Usuario {
 	private Boolean habilitar;
 	
 	private String genero;
+	
+	private String valorSecreto;
 }
