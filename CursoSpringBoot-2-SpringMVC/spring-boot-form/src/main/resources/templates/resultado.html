@@ -27,6 +27,7 @@
 		      <th scope="col">Pais id</th>
 		      <th scope="col">Pais codigo</th>
 		      <th scope="col">Pais nombre</th>
+		      <th scope="col">Habilitar</th>
 		      <th scope="col">Roles</th>
 		    </tr>
 		  </thead>
@@ -43,6 +44,7 @@
 		      <td th:text="${usuario.pais.id}"></td>
 		      <td th:text="${usuario.pais.codigo}"></td>
 		      <td th:text="${usuario.pais.nombre}"></td>
+		      <td th:text="'Habilitado: ' + ${usuario.habilitar}"></td>
 		      <td>
 				  <ul>
 					  <li th:each="role: ${usuario.roles}" th:text="${role.id} + ': ' + ${role.nombre} + ' -> ' + ${role.role}"></li>
