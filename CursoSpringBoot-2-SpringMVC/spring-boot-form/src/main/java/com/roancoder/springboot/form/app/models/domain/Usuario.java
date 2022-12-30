@@ -1,6 +1,7 @@
 package com.roancoder.springboot.form.app.models.domain;
 
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -53,4 +54,7 @@ public class Usuario {
 	
 	@NotNull
 	private Pais pais;
+	
+	@NotEmpty
+	private List<String> roles;
 }
