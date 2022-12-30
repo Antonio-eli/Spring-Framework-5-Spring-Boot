@@ -3,12 +3,10 @@ package com.roancoder.springboot.form.app.models.domain;
 import java.util.Date;
 import java.util.List;
 
-import org.springframework.format.annotation.DateTimeFormat;
 
 import com.roancoder.springboot.form.app.validation.IdentificadorRegex;
 import com.roancoder.springboot.form.app.validation.Requerido;
 
-import jakarta.validation.Valid;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
@@ -24,12 +22,9 @@ import lombok.Setter;
 @Getter
 @Setter
 public class Usuario {
-	//@Pattern(regexp = "[0-9]{2}[.][\\d]{3}[.][0-9]{3}[-][A-z]{1}")
 	@IdentificadorRegex
 	private String identificador;
-	//@NotEmpty(message = "El campo nombre no puede estar vacio")
 	private String nombre;
-	//@NotEmpty
 	@Requerido
 	private String apellido;
 	@NotBlank
@@ -37,7 +32,6 @@ public class Usuario {
 	private String username;
 	@NotEmpty
 	private String password;
-	//@NotEmpty
 	@Requerido
 	@Email(message = "El formato del email no es valido")
 	private String email;
@@ -49,7 +43,6 @@ public class Usuario {
 	
 	@NotNull
 	@Past
-	//@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date fechaNacimiento;
 	
 	@NotNull
