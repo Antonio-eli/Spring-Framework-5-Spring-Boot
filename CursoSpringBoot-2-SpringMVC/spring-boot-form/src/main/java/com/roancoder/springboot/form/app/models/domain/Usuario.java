@@ -56,5 +56,5 @@ public class Usuario {
 	private Pais pais;
 	
 	@NotEmpty
-	private List<String> roles;
+	private List<Role> roles;
 }

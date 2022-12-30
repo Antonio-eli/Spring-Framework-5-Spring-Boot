@@ -22,9 +22,9 @@
 			<div class="alert alert-danger my-3" role="alert" th:if="${#fields.hasErrors('pais')}" th:errors="*{pais}"></div>
 		  </div>
 		  <div class="mb-3">
-			  <div class="form-check form-check-inline" th:each="role: ${listaRolesMap.entrySet()}">
-				  <input type="checkbox" class="form-check-input" th:field="*{roles}" th:value="${role.key}" aria-describedby="roles">
-				  <label class="form-check-label" th:for="${#ids.prev('roles')}" th:text="${role.value}"></label>
+			  <div class="form-check form-check-inline" th:each="role: ${listaRoles}">
+				  <input type="checkbox" class="form-check-input" th:field="*{roles}" th:value="${role.id}" aria-describedby="roles">
+				  <label class="form-check-label" th:for="${#ids.prev('roles')}" th:text="${role.nombre}"></label>
 			  </div>
 		      <div class="alert alert-danger my-3" role="alert" th:if="${#fields.hasErrors('roles')}" th:errors="*{roles}"></div>
 		  </div>

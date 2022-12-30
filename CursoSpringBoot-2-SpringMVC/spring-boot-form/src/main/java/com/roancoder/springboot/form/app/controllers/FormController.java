@@ -24,9 +24,12 @@ import org.springframework.web.bind.support.SessionStatus;
 
 import com.roancoder.springboot.form.app.editors.NombreMayusculaEditor;
 import com.roancoder.springboot.form.app.editors.PaisPropertyEditors;
+import com.roancoder.springboot.form.app.editors.RolesEditor;
 import com.roancoder.springboot.form.app.models.domain.Pais;
+import com.roancoder.springboot.form.app.models.domain.Role;
 import com.roancoder.springboot.form.app.models.domain.Usuario;
 import com.roancoder.springboot.form.app.services.PaisService;
+import com.roancoder.springboot.form.app.services.RoleService;
 import com.roancoder.springboot.form.app.validation.UsuarioValidador;
 
 import jakarta.validation.Valid;
@@ -39,8 +42,15 @@ public class FormController {
 	private UsuarioValidador validador;
 	@Autowired
 	private PaisService paisService;
+	
+	@Autowired
+	private RoleService roleService;
+	
 	@Autowired
 	private PaisPropertyEditors paisEditor;
+	
+	@Autowired
+	private RolesEditor roleEditor;
 	
 	@InitBinder
 	public void initBinder(WebDataBinder binder) {
@@ -51,6 +61,12 @@ public class FormController {
 		binder.registerCustomEditor(String.class, "nombre", new NombreMayusculaEditor());
 		binder.registerCustomEditor(String.class, "apellido", new NombreMayusculaEditor());
 		binder.registerCustomEditor(Pais.class, "pais", paisEditor);
+		binder.registerCustomEditor(Role.class, "roles", roleEditor);
+	}
+	
+	@ModelAttribute("listaRoles")
+	public List<Role> listaRoles(){
+		return this.roleService.listar();
 	}
 	
 	@ModelAttribute("listaPaises")
@@ -96,7 +112,7 @@ public class FormController {
 		return paises;
 	}
 	
-	@GetMapping("/form")
+	@GetMapping({"/", "", "/form"})
 	public String form(Model model) {
 		Usuario usuario = new Usuario();
 		usuario.setNombre("Eliceo");

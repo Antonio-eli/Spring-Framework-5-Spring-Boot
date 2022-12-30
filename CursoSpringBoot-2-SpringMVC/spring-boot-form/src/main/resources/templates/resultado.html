@@ -45,7 +45,7 @@
 		      <td th:text="${usuario.pais.nombre}"></td>
 		      <td>
 				  <ul>
-					  <li th:each="role: ${usuario.roles}" th:text="${role}"></li>
+					  <li th:each="role: ${usuario.roles}" th:text="${role.id} + ': ' + ${role.nombre} + ' -> ' + ${role.role}"></li>
 				  </ul>
 			  </td>
 		    </tr>
