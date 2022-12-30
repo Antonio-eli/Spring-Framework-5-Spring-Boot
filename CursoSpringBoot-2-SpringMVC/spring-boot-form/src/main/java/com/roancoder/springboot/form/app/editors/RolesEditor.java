@@ -19,7 +19,6 @@ public class RolesEditor extends PropertyEditorSupport{
 		try {
 			Integer id = Integer.parseInt(text);
 			setValue(service.obtenerPorId(id));
-			
 		} catch (NumberFormatException e) {
 			setValue(null);
 		}
