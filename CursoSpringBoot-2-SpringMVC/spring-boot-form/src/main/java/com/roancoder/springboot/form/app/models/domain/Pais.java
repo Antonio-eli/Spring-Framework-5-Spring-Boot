@@ -17,4 +17,11 @@ public class Pais {
 	//@NotEmpty
 	private String codigo;
 	private String nombre;
+	
+	@Override
+	public String toString() {
+		return this.id.toString();
+	}
+	
+	
 }

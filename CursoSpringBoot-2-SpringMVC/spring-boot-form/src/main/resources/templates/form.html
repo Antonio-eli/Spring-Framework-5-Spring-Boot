@@ -27,7 +27,7 @@
 		  </div>
 		  <div class="mb-3">
 			  <div class="form-check form-check-inline" th:each="role: ${listaRoles}">
-				  <input type="checkbox" class="form-check-input" th:field="*{roles}" th:value="${role.id}" aria-describedby="roles">
+				  <input type="checkbox" class="form-check-input" th:field="*{roles}" th:value="${role.id}" th:checked="${#lists.contains(usuario.roles, role)}" aria-describedby="roles">
 				  <label class="form-check-label" th:for="${#ids.prev('roles')}" th:text="${role.nombre}"></label>
 			  </div>
 		      <div class="alert alert-danger my-3" role="alert" th:if="${#fields.hasErrors('roles')}" th:errors="*{roles}"></div>
