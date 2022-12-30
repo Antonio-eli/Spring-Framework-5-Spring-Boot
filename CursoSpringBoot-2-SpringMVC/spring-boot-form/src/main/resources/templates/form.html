@@ -22,10 +22,10 @@
 			<div class="alert alert-danger my-3" role="alert" th:if="${#fields.hasErrors('pais')}" th:errors="*{pais}"></div>
 		  </div>
 		  <div class="mb-3">
-			  <label for="roles" class="form-label">Roles</label>
+			  <label class="form-label">Roles</label>
 			  <div th:each="role: ${listaRolesString}">
-				  <input type="checkbox" class="form-check-input" id="" th:field="*{roles}" value="${role}" aria-describedby="roles">
-				  <label class="form-check-label" th:for="${#ids.prev('roles')}" th:text="${rol}"></label>
+				  <input type="checkbox" class="form-check-input" th:field="*{roles}" th:value="${role}" aria-describedby="roles">
+				  <label class="form-check-label" th:for="${#ids.prev('roles')}" th:text="${role}"></label>
 			  </div>
 		      <div class="alert alert-danger my-3" role="alert" th:if="${#fields.hasErrors('roles')}" th:errors="*{roles}"></div>
 		  </div>
