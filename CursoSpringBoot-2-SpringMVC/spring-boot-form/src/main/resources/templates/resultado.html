@@ -20,6 +20,7 @@
 		      <th scope="col">Username</th>
 		      <th scope="col">Nombre</th>
 		      <th scope="col">Apellido</th>
+		      <th scope="col">Género</th>
 		      <th scope="col">Password</th>
 		      <th scope="col">Email</th>
 		      <th scope="col">Cuenta</th>
@@ -37,6 +38,7 @@
 		      <td th:text="${usuario.username}"></td>
 		      <td th:text="${usuario.nombre}"></td>
 		      <td th:text="${usuario.apellido}"></td>
+		      <td th:text="${usuario.genero}"></td>
 		      <td th:text="${usuario.password}"></td>
 		      <td th:text="${usuario.email}"></td>
 		      <td th:text="${usuario.cuenta}"></td>
@@ -53,6 +55,7 @@
 		    </tr>
 		  </tbody>
 		</table>
+		<a th:href="@{/form}" class="btn btn-primary">Volver</a>
 	</div>
 
     <!-- Option 1: Bootstrap Bundle with Popper -->

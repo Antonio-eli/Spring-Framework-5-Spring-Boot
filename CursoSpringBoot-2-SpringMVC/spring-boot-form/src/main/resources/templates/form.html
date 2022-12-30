@@ -53,6 +53,13 @@
 		    <div class="alert alert-danger my-3" role="alert" th:if="${#fields.hasErrors('apellido')}" th:errors="*{apellido}"></div>
 		  </div>
 		  <div class="mb-3">
+			  <div class="form-check form-check-inline" th:each="gen: ${genero}">
+				  <input class="form-check-input" type="radio" th:field="*{genero}" th:value="${gen}">
+				  <label class="form-check-label" th:for="${#ids.prev('genero')}" th:text="${gen}"></label>
+			  </div>
+			  <div class="alert alert-danger my-3" role="alert" th:if="${#fields.hasErrors('genero')}" th:errors="*{genero}"></div>
+		  </div>
+		  <div class="mb-3">
 		    <label for="password" class="form-label">Password</label>
 		    <input type="password" class="form-control" id="password" th:field="*{password}">
 		    <div class="alert alert-danger my-3" role="alert" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></div>

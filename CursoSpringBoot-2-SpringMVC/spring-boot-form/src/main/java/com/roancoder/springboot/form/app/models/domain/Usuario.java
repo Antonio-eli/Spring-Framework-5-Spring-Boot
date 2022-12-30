@@ -59,4 +59,6 @@ public class Usuario {
 	private List<Role> roles;
 	
 	private Boolean habilitar;
+	
+	private String genero;
 }
