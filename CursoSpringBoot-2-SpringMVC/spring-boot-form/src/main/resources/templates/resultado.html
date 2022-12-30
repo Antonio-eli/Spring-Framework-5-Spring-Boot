@@ -24,7 +24,9 @@
 		      <th scope="col">Email</th>
 		      <th scope="col">Cuenta</th>
 		      <th scope="col">Fecha nacimiento</th>
-		      <th scope="col">Pais</th>
+		      <th scope="col">Pais id</th>
+		      <th scope="col">Pais codigo</th>
+		      <th scope="col">Pais nombre</th>
 		    </tr>
 		  </thead>
 		  <tbody>
@@ -37,7 +39,9 @@
 		      <td th:text="${usuario.email}"></td>
 		      <td th:text="${usuario.cuenta}"></td>
 		      <td th:text="${#dates.format(usuario.fechaNacimiento, 'dd/MM/yyyy')}"></td>
+		      <td th:text="${usuario.pais.id}"></td>
 		      <td th:text="${usuario.pais.codigo}"></td>
+		      <td th:text="${usuario.pais.nombre}"></td>
 		    </tr>
 		  </tbody>
 		</table>

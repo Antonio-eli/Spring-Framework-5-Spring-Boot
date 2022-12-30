@@ -15,11 +15,11 @@
     	<h2 th:text="${titulo}"></h2>
 		<form th:action="@{/form}" th:object="${usuario}" method="post">
 		  <div class="mb-3">
-		    <select class="form-select"id="pais.codigo" th:field="*{pais.codigo}" aria-label="Selecciona tu país">
+		    <select class="form-select"id="pais" th:field="*{pais}" aria-label="Selecciona tu país">
 			  <option selected value="">Selecciona tu país</option>
-			  <option th:each="pais: ${listaPaises}" th:text="${pais.nombre}" th:value="${pais.codigo}"></option>
+			  <option th:each="pais: ${listaPaises}" th:text="${pais.nombre}" th:value="${pais.id}"></option>
 			</select>
-			<div class="alert alert-danger my-3" role="alert" th:if="${#fields.hasErrors('pais.codigo')}" th:errors="*{pais.codigo}"></div>
+			<div class="alert alert-danger my-3" role="alert" th:if="${#fields.hasErrors('pais')}" th:errors="*{pais}"></div>
 		  </div>
 		  <div class="mb-3">
 		    <label for="identificador" class="form-label">ID</label>
