@@ -16,12 +16,8 @@
 
 <body>
 	<div class="container py-3">
-		<nav class="navbar navbar-light bg-light">
-			<div class="container-fluid">
-				<span class="navbar-brand mb-0 h1"
-					th:text="'Tiempo Transcurrido Interceptor: ' + ${tiempoTranscurrido} + ' en milisegundos.'"></span>
-			</div>
-		</nav>
+		<nav class="navbar navbar-light bg-light" th:replace="componentes/tiempo :: interceptor"></nav>
+
 		<main>
 			<h2 th:text="${titulo}"></h2>
 			<table class="table">

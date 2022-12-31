@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+</head>
+
+<body>
+	<nav class="navbar navbar-light bg-light" th:fragment="interceptor">
+		<div class="container-fluid" th:if="${tiempoTranscurrido != null}">
+			<span class="navbar-brand mb-0 h1"
+				th:text="'Tiempo Transcurrido Interceptor: ' + ${tiempoTranscurrido} + ' en milisegundos.'"></span>
+		</div>
+	</nav>
+</body>
+
+</html>
