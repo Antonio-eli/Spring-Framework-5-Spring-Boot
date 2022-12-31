@@ -23,6 +23,6 @@ public class ErrorHanddlerController {
 		model.addAttribute("message", ex.getMessage());
 		model.addAttribute("status", HttpStatus.INTERNAL_SERVER_ERROR.value());
 		model.addAttribute("timestamp", new Date());
-		return "error/errorGenerico";
+		return "error/numeroFormato";
 	}
 }
