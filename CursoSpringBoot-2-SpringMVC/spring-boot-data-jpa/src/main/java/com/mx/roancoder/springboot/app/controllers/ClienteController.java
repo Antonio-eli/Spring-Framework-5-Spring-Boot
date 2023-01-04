@@ -5,12 +5,16 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.mx.roancoder.springboot.app.models.dao.IClienteDao;
 import com.mx.roancoder.springboot.app.models.entity.Cliente;
+
+import jakarta.validation.Valid;
+
+
 
 
 
@@ -36,7 +40,11 @@ public class ClienteController {
 	}
 	
 	@PostMapping("/form")
-	public String guardar(Cliente cliente) {
+	public String guardar(@Valid Cliente cliente, BindingResult result, Model model) {
+		if(result.hasErrors()){
+			model.addAttribute("titulo", "Formulario del cliente");
+			return "form";
+		}
 		clienteDao.save(cliente);
 		return "redirect:listar";
 	}
