@@ -39,7 +39,7 @@
 				</ul>
 			</div>
 			<form th:action="@{/form}" th:object="${cliente}" method="post">
-				<input type="hidden" class="form-control" id="id" th:fiel="*{id}" aria-describedby="id">
+				
 				<div class="mb-3">
 					<label for="nombre" class="form-label">Nombre</label>
 					<input type="text" class="form-control" id="nombre" th:field="*{nombre}" th:errorclass="'border border-danger'"  aria-describedby="nombre">
