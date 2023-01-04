@@ -1,2 +1,2 @@
-INSERT INTO clientes (id, nombre, apellido,email,create_at) values(1, 'Eliceo','Romero','eliceoroan@gmail.com', '2023-01-03')
-INSERT INTO clientes (id, nombre, apellido,email,create_at) values(2, 'Luis','Alarcon','luisalarcon@gmail.com', '2022-12-31')
+INSERT INTO clientes (nombre, apellido,email,create_at) values('Eliceo','Romero','eliceoroan@gmail.com', '2023-01-03')
+INSERT INTO clientes (nombre, apellido,email,create_at) values('Luis','Alarcon','luisalarcon@gmail.com', '2022-12-31')
