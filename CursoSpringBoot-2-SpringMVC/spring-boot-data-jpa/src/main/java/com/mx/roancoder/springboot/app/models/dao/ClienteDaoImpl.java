@@ -32,7 +32,6 @@ public class ClienteDaoImpl implements IClienteDao{
 		}else {
 			em.persist(cliente);
 		}
-		em.persist(cliente);
 	}
 
 	@Override

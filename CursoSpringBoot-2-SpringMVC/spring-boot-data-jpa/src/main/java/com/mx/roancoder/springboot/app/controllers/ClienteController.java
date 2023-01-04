@@ -62,7 +62,7 @@ public class ClienteController {
 			return "form";
 		}
 		clienteDao.save(cliente);
-		status.isComplete();
+		status.setComplete();
 		return "redirect:listar";
 	}
 	
