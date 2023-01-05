@@ -9,5 +9,6 @@ public interface IClienteDao {
 	
 	public void save(Cliente cliente);
 	public Cliente clienteId(Long id);
+	public void delete(Long id);
 
 }

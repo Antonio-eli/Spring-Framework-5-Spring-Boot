@@ -42,6 +42,7 @@
 						<th scope="col">email</th>
 						<th scope="col">Fecha</th>
 						<th scope="col">Editar</th>
+						<th scope="col">Eliminar</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -52,13 +53,11 @@
 						<td th:text="${cliente.email}"></td>
 						<td th:text="${cliente.createAt}"></td>
 						<td><a class="btn btn-primary" th:href="@{/form/} + ${cliente.id}" th:text="'Editar'"></a></td>
-						
+						<td><a class="btn btn-danger" th:href="@{/eliminar/} + ${cliente.id}" th:text="'Eliminar'" onclick="return confirm('¿Estás seguro de eliminar el registro?');"></a></td>
 					</tr>
 				</tbody>
 			</table>
-
 		</main>
-
 	</div>
 
 	<!-- http://localhost:8090/h2-console/login -->
