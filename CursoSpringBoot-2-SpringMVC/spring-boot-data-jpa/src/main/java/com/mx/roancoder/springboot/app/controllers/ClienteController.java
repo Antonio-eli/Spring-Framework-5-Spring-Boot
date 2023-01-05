@@ -12,26 +12,22 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
-import com.mx.roancoder.springboot.app.models.dao.IClienteDao;
 import com.mx.roancoder.springboot.app.models.entity.Cliente;
+import com.mx.roancoder.springboot.app.models.service.IClienteService;
 
 import jakarta.validation.Valid;
-
-
-
-
 
 @Controller
 @SessionAttributes("cliente")
 public class ClienteController {
 	
 	@Autowired
-	private IClienteDao clienteDao;
+	private IClienteService clienteService;
 	
 	@GetMapping({"/", "", "/listar"})
 	private String listar(Model model) {
 		model.addAttribute("titulo", "Listado de clientes");
-		model.addAttribute("clientes", clienteDao.findAll());
+		model.addAttribute("clientes", clienteService.findAll());
 		return "listar";
 	}
 	
@@ -46,7 +42,7 @@ public class ClienteController {
 	public String editar(@PathVariable Long id, Map<String, Object> model) {
 		Cliente cliente = null;
 		if( id > 0 ) {
-			cliente = clienteDao.clienteId(id);
+			cliente = clienteService.clienteId(id);
 		}else {
 			return "redirect:listar";
 		}
@@ -61,7 +57,7 @@ public class ClienteController {
 			model.addAttribute("titulo", "Formulario del cliente");
 			return "form";
 		}
-		clienteDao.save(cliente);
+		clienteService.save(cliente);
 		status.setComplete();
 		return "redirect:listar";
 	}
@@ -69,9 +65,9 @@ public class ClienteController {
 	@GetMapping("/eliminar/{id}")
 	public String eliminar(@PathVariable Long id) {
 		if( id > 0 ) {
-			clienteDao.delete(id);
+			clienteService.delete(id);
 		}
-		return "redirect:listar";
+		return "redirect:/listar";
 	}
 	
 	
