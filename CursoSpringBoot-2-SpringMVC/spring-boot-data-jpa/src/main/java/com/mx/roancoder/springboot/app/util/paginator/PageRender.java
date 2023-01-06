@@ -25,7 +25,7 @@ public class PageRender<T> {
 		totalPaginas = page.getTotalPages();
 		paginaActual = page.getNumber() + 1;
 		
-		int desde, hasta=0;
+		int desde, hasta = 0;
 		if(totalPaginas <= numElementosPorPagina) {
 			desde = 1;
 			desde = totalPaginas;
@@ -42,7 +42,7 @@ public class PageRender<T> {
 			}
 		}
 		
-		for(int i=0; i< hasta; i++) {
+		for (int i = 0; i < hasta; i++) {
 			paginas.add(new PageItem(desde + i, paginaActual == desde + i));
 		}
 	}
@@ -56,7 +56,7 @@ public class PageRender<T> {
 	public boolean isHasNext() {
 		return page.hasNext();
 	}
-	public boolean ishasPrevious() {
+	public boolean isHasPrevious() {
 		return page.hasPrevious();
 	}
 }
