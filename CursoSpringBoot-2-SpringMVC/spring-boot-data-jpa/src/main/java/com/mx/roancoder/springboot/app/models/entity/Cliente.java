@@ -47,6 +47,8 @@ public class Cliente implements Serializable{
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date createAt;
 	
+	private String foto;
+	
 	public void prePersist() {
 		createAt = new Date();
 	}

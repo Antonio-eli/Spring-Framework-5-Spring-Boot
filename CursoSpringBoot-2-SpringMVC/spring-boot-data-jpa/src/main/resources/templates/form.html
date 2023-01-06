@@ -13,7 +13,7 @@
 				  <li class="list-group-item list-group-item-danger" th:each="err: ${#fields.errors('*')}" th:text="${err}"></li>
 				</ul>
 			</div>
-			<form th:action="@{/form}" th:object="${cliente}" method="post">
+			<form th:action="@{/form}" th:object="${cliente}" method="post" enctype="multipart/form-data">
 				
 				<div class="mb-3">
 					<label for="nombre" class="form-label">Nombre</label>
@@ -35,6 +35,11 @@
 					<input type="text" class="form-control" id="email" th:field="*{createAt}" th:errorclass="'border border-danger'" aria-describedby="createAt">
 					<div class="alert alert-danger my-3" role="alert" th:if="${#fields.hasErrors('createAt')}"th:errors="*{createAt}"></div>
 				</div>
+				<div class="mb-3">
+				  <label for="formFile" class="form-label">Subir imagen</label>
+				  <input class="form-control" type="file" id="file" name="file">
+				</div>
+				
 				<button type="submit" class="btn btn-primary">Enviar</button>
 			</form>
 		</main>
