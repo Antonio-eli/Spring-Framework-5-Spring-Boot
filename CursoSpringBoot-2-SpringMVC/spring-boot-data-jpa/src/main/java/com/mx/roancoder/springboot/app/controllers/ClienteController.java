@@ -5,6 +5,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Map;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -27,9 +28,11 @@ import com.mx.roancoder.springboot.app.models.service.IClienteService;
 import com.mx.roancoder.springboot.app.util.paginator.PageRender;
 
 import jakarta.validation.Valid;
+import lombok.extern.log4j.Log4j2;
 
 @Controller
 @SessionAttributes("cliente")
+@Log4j2
 public class ClienteController {
 	
 	@Autowired
@@ -92,14 +95,17 @@ public class ClienteController {
 		}
 		
 		if(!foto.isEmpty()) {
-			String roorPath = "C://Temp//uploads";
+			String uniqueFileName = UUID.randomUUID().toString() + "_" + foto.getOriginalFilename();
+			Path roorPath = Paths.get("uploads").resolve(uniqueFileName);
+			
+			Path rootAbsolutPath = roorPath.toAbsolutePath();
+			log.info("roorPath :: " + roorPath);
+			log.info("rootAbsolutPath :: " + rootAbsolutPath);
 			try {
-				byte[] bytes = foto.getBytes();
-				Path rutaCompleta = Paths.get(roorPath + "//" + foto.getOriginalFilename());
-				Files.write(rutaCompleta, bytes);
-				flash.addFlashAttribute("info", "Has subido correctamente '" + foto.getOriginalFilename() );
+				Files.copy(foto.getInputStream(), rootAbsolutPath);
+				flash.addFlashAttribute("info", "Has subido correctamente '" + uniqueFileName);
 				
-				cliente.setFoto(foto.getOriginalFilename());
+				cliente.setFoto(uniqueFileName);
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
