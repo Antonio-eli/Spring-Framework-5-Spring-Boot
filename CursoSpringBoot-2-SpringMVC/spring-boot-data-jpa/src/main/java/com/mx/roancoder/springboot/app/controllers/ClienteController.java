@@ -1,5 +1,6 @@
 package com.mx.roancoder.springboot.app.controllers;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -30,6 +31,7 @@ import org.springframework.web.servlet.mvc.method.annotation.HttpHeadersReturnVa
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.mx.roancoder.springboot.app.models.entity.Cliente;
+import com.mx.roancoder.springboot.app.models.service.ClienteServiceImpl;
 import com.mx.roancoder.springboot.app.models.service.IClienteService;
 import com.mx.roancoder.springboot.app.util.paginator.PageRender;
 
@@ -44,10 +46,11 @@ public class ClienteController {
 	
 	@Autowired
 	private IClienteService clienteService;
+	private final static String UPLOADS_FOLDER = "uploads";
 	
 	@GetMapping(value="/uploads/{filename:.+}")
 	public ResponseEntity<Resource> verFoto(@PathVariable String filename){
-		Path pathFoto = Paths.get("uploads").resolve(filename).toAbsolutePath();
+		Path pathFoto = Paths.get(UPLOADS_FOLDER).resolve(filename).toAbsolutePath();
 		log.info("pathFoto :: " + pathFoto);
 		Resource recurso = null;
 		try {
@@ -121,8 +124,17 @@ public class ClienteController {
 		}
 		
 		if(!foto.isEmpty()) {
+			if(cliente.getId() != null && cliente.getId() > 0 && cliente.getFoto() != null && cliente.getFoto().length() > 0) {
+				Path rootPath = Paths.get(UPLOADS_FOLDER).resolve(cliente.getFoto()).toAbsolutePath();
+				File archivo = rootPath.toFile();
+				
+				if(archivo.exists() && archivo.canRead()) {
+					archivo.delete();
+				}
+			}
+			
 			String uniqueFileName = UUID.randomUUID().toString() + "_" + foto.getOriginalFilename();
-			Path roorPath = Paths.get("uploads").resolve(uniqueFileName);
+			Path roorPath = Paths.get(UPLOADS_FOLDER).resolve(uniqueFileName);
 			
 			Path rootAbsolutPath = roorPath.toAbsolutePath();
 			log.info("roorPath :: " + roorPath);
@@ -147,8 +159,18 @@ public class ClienteController {
 	@GetMapping("/eliminar/{id}")
 	public String eliminar(@PathVariable Long id, RedirectAttributes flash) {
 		if( id > 0 ) {
+			Cliente cliente = clienteService.clienteId(id);
 			clienteService.delete(id);
 			flash.addFlashAttribute("success", "Cliente eliminado con éxito");
+			
+			Path rootPath = Paths.get(UPLOADS_FOLDER).resolve(cliente.getFoto()).toAbsolutePath();
+			File archivo = rootPath.toFile();
+			
+			if(archivo.exists() && archivo.canRead()) {
+				if(archivo.delete()) {
+					flash.addFlashAttribute("info", "Foto " + cliente.getFoto() + " eliminada con exito!");
+				}
+			}
 		}
 		return "redirect:/listar";
 	}
