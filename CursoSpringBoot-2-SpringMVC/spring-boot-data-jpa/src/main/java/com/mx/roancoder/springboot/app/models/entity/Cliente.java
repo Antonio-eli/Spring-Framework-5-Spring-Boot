@@ -53,7 +53,7 @@ public class Cliente implements Serializable{
 	private Date createAt;
 	
 	private String foto;
-	@OneToMany(mappedBy = "cliente", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "cliente", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<Factura> facturas;
 	
 	
