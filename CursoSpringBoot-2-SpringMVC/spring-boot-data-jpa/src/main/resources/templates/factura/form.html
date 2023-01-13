@@ -7,13 +7,25 @@
 	<header th:replace="layout/layout :: header"></header>
 	<div class="container my-4">
 		<main>
-			
-			
-
+			<h2 th:text="${titulo}"></h2>
+			<form th:action="@{/factura/form}" th:object="${factura}" method="post">
+				<div class="mb-3">
+					<label for="nombre" class="form-label" th:text="'Cliente'"></label>
+					<input type="text" class="form-control" id="descripcion" th:value="${factura.cliente.nombre} + ' ' + ${factura.cliente.apellido}" disabled="disabled">
+				</div>
+				<div class="mb-3">
+					<label for="nombre" class="form-label" th:text="'Descripción'"></label>
+					<input type="text" class="form-control" id="descripcion" th:field="*{descripcion}" th:errorclass="'border border-danger'"  aria-describedby="descripcion">
+					<div class="alert alert-danger my-3" role="alert" th:if="${#fields.hasErrors('descripcion')}"th:errors="*{descripcion}"></div>
+				</div>
+				<div class="form-floating">
+				  <textarea class="form-control" placeholder="Leave a comment here" id="observacion" th:field="*{observacion}" style="height: 100px"></textarea>
+				  <label for="floatingTextarea2" th:text="'Observación'"></label>
+				</div>
+				<button type="submit" th:text="${titulo}" class="btn btn-primary my-2"></button>
+			</form>
 		</main>
-
 	</div>
-
 	<footer th:replace="layout/layout :: footer"></footer>
 </body>
 
