@@ -1,10 +1,10 @@
 <!doctype html>
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
 
-<head th:replace="layout/layout :: head"></head>
+<head th:replace="~{layout/layout :: head}"></head>
 
 <body>
-	<header th:replace="layout/layout :: header"></header>
+	<header th:replace="~{layout/layout :: header}"></header>
 	
 	<div class="container py-3">
 		<main>
@@ -30,16 +30,16 @@
 						<td th:text="${cliente.apellido}"></td>
 						<td th:text="${cliente.email}"></td>
 						<td th:text="${cliente.createAt}"></td>
-						<td><a class="btn btn-light" th:href="@{'/factura/form/' + ${cliente.id}}" th:text="'Crear factura'"></a></td>
+						<td><a class="btn btn-success" th:href="@{'/factura/form/' + ${cliente.id}}" th:text="'Crear factura'"></a></td>
 						<td><a class="btn btn-primary" th:href="@{/form/} + ${cliente.id}" th:text="'Editar'"></a></td>
 						<td><a class="btn btn-danger" th:href="@{/eliminar/} + ${cliente.id}" th:text="'Eliminar'" onclick="return confirm('¿Estás seguro de eliminar el registro?');"></a></td>
 					</tr>
 				</tbody>
 			</table>
-			<nav th:replace="paginator :: paginacion">
+			<nav th:replace="~{paginator :: paginacion}"></nav>
 		</main>
 	</div>
 
-	<footer th:replace="layout/layout :: footer"></footer>
+	<footer th:replace="~{layout/layout :: footer}"></footer>
 	</body>
 </html>
