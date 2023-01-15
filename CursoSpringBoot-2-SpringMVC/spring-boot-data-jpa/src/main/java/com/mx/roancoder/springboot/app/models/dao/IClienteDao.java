@@ -1,8 +1,5 @@
 package com.mx.roancoder.springboot.app.models.dao;
 
-
-
-
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.mx.roancoder.springboot.app.models.entity.Cliente;

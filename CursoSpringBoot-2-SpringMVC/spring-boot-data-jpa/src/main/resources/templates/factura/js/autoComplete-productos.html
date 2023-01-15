@@ -4,10 +4,10 @@
 	<script type="text/javascript" th:fragment="js">
 		$(function() {
 		    $("#buscar_producto").autocomplete({
-		    	source: function(requets, response){
+		    	source: function(request, response){
 		    		$.ajax({
 		    			url: "/factura/cargar-productos/" + request.term,
-		    			dataType: "jason",
+		    			dataType: "json",
 		    			data: {
 		    				term: request.term
 		    			},
