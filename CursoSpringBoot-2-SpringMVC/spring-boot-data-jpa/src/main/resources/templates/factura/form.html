@@ -47,6 +47,9 @@
 						  <tbody>						   
 						  </tbody>
 						</table>
+						<div class="d-flex justify-content-end">
+							<h5>Total de la factura <span class="badge bg-secondary" id="gran_total"></span></h5>
+						</div>
 						
 						<button type="submit" th:text="${titulo}" class="btn btn-primary my-2"></button>
 						<a th:href="@{'/ver/' + ${factura.cliente.id}}" th:text="'&laquo; volver'" class="btn btn-secondary my-2"></a>
