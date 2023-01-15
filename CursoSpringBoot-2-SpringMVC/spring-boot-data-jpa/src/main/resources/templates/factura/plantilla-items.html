@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<body>
+	<div class="container my-4">
+		<main>
+			<table class="table d-none" th:fragment="itemsFactura">
+				<tbody id="plantillaItemsFactura">
+					<tr id="row_{ID}">
+						<td class="d-none"><input type="hidden" value="{ID}"  name="item_id[]"/></td>
+						<td>{NOMBRE}</td>
+						<td>{APELLIDO}</td>
+						<td><input type="number" value="1"  name="cantidad[]" id="cantidad_{ID}" class="form-control col-sm-4"/></td>
+					</tr>
+				</tbody>
+			</table>
+		</main>
+	</div>
+</body>
+</html>

@@ -33,6 +33,7 @@
 							<label for="buscar_producto" class="form-label" th:text="'Buscar producto'"></label>
 							<input type="text" class="form-control" id="buscar_producto" name="buscar_producto"/>
 						</div>
+						<table th:replace="~{factura/plantilla-items :: itemsFactura}"></table>
 						
 						<button type="submit" th:text="${titulo}" class="btn btn-primary my-2"></button>
 						<a th:href="@{'/ver/' + ${factura.cliente.id}}" th:text="'&laquo; volver'" class="btn btn-secondary my-2"></a>
