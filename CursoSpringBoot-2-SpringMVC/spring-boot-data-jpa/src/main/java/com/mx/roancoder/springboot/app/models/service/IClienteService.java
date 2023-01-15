@@ -17,4 +17,5 @@ public interface IClienteService {
 	public void delete(Long id);
 	public List<Producto> findByNombre(String term);
 	public void saveFatura(Factura factura);
+	public Producto findProductoById(Long id);
 }
