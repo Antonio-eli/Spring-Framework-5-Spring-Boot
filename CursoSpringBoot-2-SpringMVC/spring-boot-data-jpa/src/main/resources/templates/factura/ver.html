@@ -11,38 +11,78 @@
 				<h5 class="card-header" th:text="${titulo}"></h5>
 				<div class="card-body">
 					<div class="accordion" id="accordionDetalleFactura">
-						
+
 						<div class="accordion-item">
 							<h2 class="accordion-header" id="headingDatosCliente">
-								<button class="accordion-button" th:text="'Datos del cliente'" type="button" data-bs-toggle="collapse" data-bs-target="#collapseDatosCliente" aria-expanded="true" aria-controls="collapseDatosCliente"></button>
+								<button class="accordion-button" th:text="'Datos del cliente'"
+									type="button" data-bs-toggle="collapse"
+									data-bs-target="#collapseDatosCliente" aria-expanded="true"
+									aria-controls="collapseDatosCliente"></button>
 							</h2>
-							<div id="collapseDatosCliente" class="accordion-collapse collapse show" aria-labelledby="headingDatosCliente" data-bs-parent="#accordionDatosCliente">
+							<div id="collapseDatosCliente"
+								class="accordion-collapse collapse show"
+								aria-labelledby="headingDatosCliente"
+								data-bs-parent="#accordionDatosCliente">
 								<div class="accordion-body">
-										<p class="fw-bold" th:text="${factura.cliente}"></p>
-										<p class="fw-bold" th:text="${factura.cliente.email}"></p>
+									<p class="fw-bold" th:text="${factura.cliente}"></p>
+									<p class="fw-bold" th:text="${factura.cliente.email}"></p>
 								</div>
 							</div>
 						</div>
-						
+
 						<div class="accordion-item">
 							<h2 class="accordion-header" id="headingDatosFactura">
-								<button class="accordion-button collapsed" th:text="'Datos de la factura'" type="button" data-bs-toggle="collapse" data-bs-target="#collapseheadingDatosFactura" aria-expanded="false" aria-controls="collapseheadingDatosFactura"></button>
+								<button class="accordion-button collapsed"
+									th:text="'Datos de la factura'" type="button"
+									data-bs-toggle="collapse"
+									data-bs-target="#collapseheadingDatosFactura"
+									aria-expanded="false"
+									aria-controls="collapseheadingDatosFactura"></button>
 							</h2>
-							<div id="collapseheadingDatosFactura" class="accordion-collapse collapse" aria-labelledby="headingheadingDatosFactura" data-bs-parent="#accordionheadingDatosFactura">
+							<div id="collapseheadingDatosFactura"
+								class="accordion-collapse collapse"
+								aria-labelledby="headingheadingDatosFactura"
+								data-bs-parent="#accordionheadingDatosFactura">
 								<div class="accordion-body">
 									<ul class="list-group">
-										<li class="list-group-item" th:text="'Folio: ' + ${factura.id}"></li>
-										<li class="list-group-item" th:text="'Descripción: ' + ${factura.descripcion}"></li>
-										<li class="list-group-item" th:text="'Fecha: ' + ${factura.createAt}"></li>
+										<li class="list-group-item"
+											th:text="'Folio: ' + ${factura.id}"></li>
+										<li class="list-group-item"
+											th:text="'Descripción: ' + ${factura.descripcion}"></li>
+										<li class="list-group-item"
+											th:text="'Fecha: ' + ${factura.createAt}"></li>
 									</ul>
 								</div>
 							</div>
 						</div>
-						
+
+					</div>
+					<div class="alert alert-warning" role="alert" th:if="${#lists.isEmpty(factura.items)}" th:text="'La factura no tiene productos' + ${factura.descripcion}"></div>
+					<table class="table table-sm table-striped table-hover my-4" th:if="${not #lists.isEmpty(factura.items)}">
+						<thead>
+							<tr>
+								<th scope="col">Producto</th>
+								<th scope="col">Precio</th>
+								<th scope="col">Cantidad</th>
+								<th scope="col">Total</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="linea: ${factura.items}">
+								<td th:text="${linea.producto.nombre}"></td>
+								<td th:text="${linea.producto.precio}"></td>
+								<td th:text="${linea.cantidad}"></td>
+								<td th:text="${linea.calcularImporte()}"></td>
+							</tr>
+						</tbody>
+					</table>
+					<div class="d-flex justify-content-end">
+						<h5>Total de la factura: <span class="badge bg-secondary" th:text="${factura.total}"></span></h5>
 					</div>
 				</div>
 				<div class="card-footer d-flex justify-content-end">
-					<a th:href="@{'/ver/' + ${factura.cliente.id}}" th:text="'&laquo; volver'" class="btn btn-secondary my-2"></a>
+					<a th:href="@{'/ver/' + ${factura.cliente.id}}"
+						th:text="'&laquo; volver'" class="btn btn-secondary my-2"></a>
 				</div>
 			</div>
 		</main>
