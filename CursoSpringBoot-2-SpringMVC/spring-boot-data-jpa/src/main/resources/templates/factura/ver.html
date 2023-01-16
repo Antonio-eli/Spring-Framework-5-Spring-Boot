@@ -57,8 +57,11 @@
 						</div>
 
 					</div>
-					<div class="alert alert-warning" role="alert" th:if="${#lists.isEmpty(factura.items)}" th:text="'La factura no tiene productos' + ${factura.descripcion}"></div>
-					<table class="table table-sm table-striped table-hover my-4" th:if="${not #lists.isEmpty(factura.items)}">
+					<div class="alert alert-warning" role="alert"
+						th:if="${#lists.isEmpty(factura.items)}"
+						th:text="'La factura no tiene productos' + ${factura.descripcion}"></div>
+					<table class="table table-sm table-striped table-hover my-4"
+						th:if="${not #lists.isEmpty(factura.items)}">
 						<thead>
 							<tr>
 								<th scope="col">Producto</th>
@@ -77,8 +80,17 @@
 						</tbody>
 					</table>
 					<div class="d-flex justify-content-end">
-						<h5>Total de la factura: <span class="badge bg-secondary" th:text="${factura.total}"></span></h5>
+						<h5>Total de la factura: <span class="badge bg-secondary" th:text="${factura.total}"></span>
+						</h5>
 					</div>
+					<div class="card border-dark my-4">
+						<div class="card-header">Observaciones</div>
+						<div class="card-body">
+							<h5 class="card-text fst-italic text-secondary" th:if="${#strings.isEmpty(factura.observacion)}" th:text="'La factura no tiene observaciones'"></h5>
+							<p class="card-title" th:text="${factura.observacion}" th:if="${not #strings.isEmpty(factura.observacion)}"></p>
+						</div>
+					</div>
+
 				</div>
 				<div class="card-footer d-flex justify-content-end">
 					<a th:href="@{'/ver/' + ${factura.cliente.id}}"
