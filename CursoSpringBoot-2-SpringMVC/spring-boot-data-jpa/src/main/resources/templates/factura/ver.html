@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{layout/layout :: head}"></head>
+
+<body>
+	<header th:replace="~{layout/layout :: header}"></header>
+	<div class="container my-4">
+		<main>
+			<div class="card">
+				<h5 class="card-header" th:text="${titulo}"></h5>
+				<div class="card-body">
+					<div class="accordion" id="accordionDetalleFactura">
+						
+						<div class="accordion-item">
+							<h2 class="accordion-header" id="headingDatosCliente">
+								<button class="accordion-button" th:text="'Datos del cliente'" type="button" data-bs-toggle="collapse" data-bs-target="#collapseDatosCliente" aria-expanded="true" aria-controls="collapseDatosCliente"></button>
+							</h2>
+							<div id="collapseDatosCliente" class="accordion-collapse collapse show" aria-labelledby="headingDatosCliente" data-bs-parent="#accordionDatosCliente">
+								<div class="accordion-body">
+										<p class="fw-bold" th:text="${factura.cliente}"></p>
+										<p class="fw-bold" th:text="${factura.cliente.email}"></p>
+								</div>
+							</div>
+						</div>
+						
+						<div class="accordion-item">
+							<h2 class="accordion-header" id="headingDatosFactura">
+								<button class="accordion-button collapsed" th:text="'Datos de la factura'" type="button" data-bs-toggle="collapse" data-bs-target="#collapseheadingDatosFactura" aria-expanded="false" aria-controls="collapseheadingDatosFactura"></button>
+							</h2>
+							<div id="collapseheadingDatosFactura" class="accordion-collapse collapse" aria-labelledby="headingheadingDatosFactura" data-bs-parent="#accordionheadingDatosFactura">
+								<div class="accordion-body">
+									<ul class="list-group">
+										<li class="list-group-item" th:text="'Folio: ' + ${factura.id}"></li>
+										<li class="list-group-item" th:text="'Descripción: ' + ${factura.descripcion}"></li>
+										<li class="list-group-item" th:text="'Fecha: ' + ${factura.createAt}"></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						
+					</div>
+				</div>
+				<div class="card-footer d-flex justify-content-end">
+					<a th:href="@{'/ver/' + ${factura.cliente.id}}" th:text="'&laquo; volver'" class="btn btn-secondary my-2"></a>
+				</div>
+			</div>
+		</main>
+	</div>
+	<footer th:replace="~{layout/layout :: footer}"></footer>
+</body>
+
+</html>

@@ -69,6 +69,13 @@ public class Cliente implements Serializable{
 	public Cliente() {
 		facturas = new ArrayList<Factura>();
 	}
+
+	@Override
+	public String toString() {
+		return nombre + " " + apellido;
+	}
+	
+	
 	
 
 }
