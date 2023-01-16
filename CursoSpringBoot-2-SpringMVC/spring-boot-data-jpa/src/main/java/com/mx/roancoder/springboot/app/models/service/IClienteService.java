@@ -13,9 +13,9 @@ public interface IClienteService {
 	public List<Cliente> findAll();
 	public Page<Cliente> findAll(Pageable pageable);
 	public void save(Cliente cliente);
-	public Cliente clienteId(Long id);
+	public Cliente findOne(Long id);
 	public void delete(Long id);
 	public List<Producto> findByNombre(String term);
-	public void saveFatura(Factura factura);
+	public void saveFactura(Factura factura);
 	public Producto findProductoById(Long id);
 }

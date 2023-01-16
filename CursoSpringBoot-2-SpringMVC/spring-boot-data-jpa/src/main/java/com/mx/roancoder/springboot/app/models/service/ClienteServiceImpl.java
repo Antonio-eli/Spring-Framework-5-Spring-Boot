@@ -41,7 +41,7 @@ public class ClienteServiceImpl implements IClienteService{
 
 	@Override
 	@Transactional
-	public Cliente clienteId(Long id) {
+	public Cliente findOne(Long id) {
 		return clienteDao.findById(id).orElse(null);
 	}
 
@@ -64,7 +64,7 @@ public class ClienteServiceImpl implements IClienteService{
 
 	@Override
 	@Transactional
-	public void saveFatura(Factura factura) {
+	public void saveFactura(Factura factura) {
 		facturaDao.save(factura);
 	}
 
@@ -73,7 +73,4 @@ public class ClienteServiceImpl implements IClienteService{
 	public Producto findProductoById(Long id) {
 		return productoDao.findById(id).orElse(null);
 	}
-	
-	
-	
 }
