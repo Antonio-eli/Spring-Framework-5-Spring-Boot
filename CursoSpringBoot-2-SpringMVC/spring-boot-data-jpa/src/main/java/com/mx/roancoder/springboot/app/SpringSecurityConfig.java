@@ -1,29 +1,40 @@
 package com.mx.roancoder.springboot.app;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfiguration;
 import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.User.UserBuilder;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 
 @Configuration
-public class SpringSecurityConfig extends WebSecurityConfiguration{
-	@Bean
-	public BCryptPasswordEncoder passwordEncoder() {
+public class SpringSecurityConfig{
+
+	@Bean 
+	public static BCryptPasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();
 	}
-	@Autowired
-	public void configurerGlobal(AuthenticationManagerBuilder builder) throws Exception{
-		PasswordEncoder encoder = passwordEncoder();
-		UserBuilder users = User.builder().passwordEncoder(encoder::encode);
+	
+	@Bean
+	public UserDetailsService userDetailsService()throws Exception{
+				
+		InMemoryUserDetailsManager manager = new InMemoryUserDetailsManager();
+		manager.createUser(User
+	            .withUsername("user")
+	            .password(passwordEncoder().encode("user"))
+	            .roles("USER")
+	            .build());
+		 manager.createUser(User
+		            .withUsername("admin")
+		            .password(passwordEncoder().encode("admin"))
+		            .roles("ADMIN","USER")
+		            .build());
 		
-		builder.inMemoryAuthentication().withUser(users.username("admin").password("12345").roles("ADMIN", "USER"))
-		.withUser(users.username("eliceo").password("12345").roles("USER"));
+		return manager;
 	}
+	
+	
 
 }
 
