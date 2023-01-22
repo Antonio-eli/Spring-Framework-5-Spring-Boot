@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.mx.roancoder.blog.app.dto.PublicacionDto;
 import com.mx.roancoder.blog.app.entity.Publicacion;
+import com.mx.roancoder.blog.app.exceptions.ResourceNotFoundException;
 import com.mx.roancoder.blog.app.repository.IPublicacionRepositorio;
 
 @Service
@@ -50,6 +51,34 @@ public class PublicacionServiceImpl implements IPublicacionService{
 		publicacion.setContenido(publicacionDto.getContenido());
 		
 		return publicacion;
+	}
+
+	@Override
+	public PublicacionDto obtenerPublicacionById(long id) {
+		Publicacion publicacion = publicacionRepositorio.findById(id)
+				.orElseThrow(()-> new ResourceNotFoundException("Publicacion", "id", id));
+		return mapearDto(publicacion);
+	}
+
+	@Override
+	public PublicacionDto actualizarPublicacion(PublicacionDto publicacionDto, long id) {
+		Publicacion publicacion = publicacionRepositorio.findById(id)
+				.orElseThrow(()-> new ResourceNotFoundException("Publicacion", "id", id));
+		
+		publicacion.setTitulo(publicacionDto.getTitulo());
+		publicacion.setDescripcion(publicacionDto.getDescripcion());
+		publicacion.setContenido(publicacionDto.getContenido());
+		
+		Publicacion publicacionActualizada = publicacionRepositorio.save(publicacion);
+		
+		return mapearDto(publicacionActualizada);
+	}
+
+	@Override
+	public void eliminarPublicacion(long id) {
+		Publicacion publicacion = publicacionRepositorio.findById(id)
+				.orElseThrow(()-> new ResourceNotFoundException("Publicacion", "id", id));
+		publicacionRepositorio.delete(publicacion);
 	}
 
 }
