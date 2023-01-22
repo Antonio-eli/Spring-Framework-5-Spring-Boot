@@ -28,7 +28,9 @@ public class SpringSecurityConfig{
         .and().formLogin()
         .permitAll()
         .and().logout()
-        .permitAll();
+        .permitAll()
+        .and()
+        .formLogin().permitAll();
  
 		return http.build();
 	}
