@@ -23,7 +23,7 @@
 	<header th:fragment="header">
 		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 			<div class="container-fluid">
-				<a class="navbar-brand" href="#">Roan-Coder</a>
+				<a class="navbar-brand" href="#">CRUD</a>
 				<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
 					data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
 					aria-label="Toggle navigation">
@@ -33,9 +33,11 @@
 					<div class="navbar-nav">
 						<a class="nav-link active" aria-current="page" href="#">Home</a>
 						<a class="nav-link" th:href="@{/listar}">Clientes</a>
-						<a class="nav-link" href="#" disabled sec:authorize="isAuthenticated()"><span sec:authentication="name"></span> <span sec:authentication="principal.authorities"></span></a>
+						<span class="text-white d-flex align-items-center mx-lg-2 mx-sm-0" sec:authorize="isAuthenticated()">
+							Perfil: <span class="mx-1" sec:authentication="name"></span> <!-- Te indica el rol que tiene <span sec:authentication="principal.authorities"></span>-->
+						</span>
 					</div>
-					<ul class="navbar-nav navbar-rigth">
+					<ul class="navbar-nav navbar-rigth ms-auto my-2 mb-lg-0">
 						<li sec:authorize="!isAuthenticated()">
 							<a class="nav-link" th:href="@{/login}">Login</a>
 						</li>
@@ -63,7 +65,7 @@
 		<div class="container">
 			<div class="d-flex justify-content-center">
 				<div class="copyright">
-					<p>Developed and maintained by <a href="#" target="_blank">company</a></p>
+					<p>CRUD con Spring Framework & Spring Boot</p>
 				</div>
 			</div>
 		</div>

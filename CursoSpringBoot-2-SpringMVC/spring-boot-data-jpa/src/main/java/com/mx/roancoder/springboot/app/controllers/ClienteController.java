@@ -11,6 +11,8 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -29,9 +31,11 @@ import com.mx.roancoder.springboot.app.models.service.UploadFileServiceImpl;
 import com.mx.roancoder.springboot.app.util.paginator.PageRender;
 
 import jakarta.validation.Valid;
+import lombok.extern.log4j.Log4j2;
 
 @Controller
 @SessionAttributes("cliente")
+@Log4j2
 public class ClienteController {
 
 	@Autowired
@@ -67,7 +71,19 @@ public class ClienteController {
 	}
 
 	@GetMapping({ "/", "", "/listar" })
-	private String listar(@RequestParam(name = "page", defaultValue = "0") int page, Model model) {
+	private String listar(@RequestParam(name = "page", defaultValue = "0") int page, Model model, Authentication authentication) {
+		
+		if(authentication != null) {
+			log.info("El usuario autenticado, es: ".concat(authentication.getName()));
+			
+		}
+		
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		if(auth != null) {
+			log.info("Utilizando forma estatica SecurityContextHolder El usuario autenticado, es: ".concat(auth.getName()));
+			
+		}
+		
 		Pageable pageRequest = PageRequest.of(page, 4);
 		Page<Cliente> clientes = clienteService.findAll(pageRequest);
 		PageRender<Cliente> pageRender = new PageRender<>("/listar", clientes);
