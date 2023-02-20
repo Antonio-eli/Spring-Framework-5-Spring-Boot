@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{layout/layout :: head}"></head>
+
+<body>
+	<header th:replace="~{layout/layout :: header}"></header>
+
+	<div class="container my-4">
+		<main class="d-flex flex-column">
+			<div class="row mt-4 p-2">
+				<div class="col-md-12 bg-primary shadow p-3 mb-5 bg-body-tertiary rounded">
+					<div class="text-center text-white py-2">
+						<h1 class="fw-light">Error: Acceso Denegado!</h1>
+						<p class="">Opps! lo sentimos <span class="" th:text="${#authentication.name}"></span> no
+							tienes los permisos para acceder a este recurso</p>
+						<a type="button" class="btn btn-outline-light" th:href="@{/listar}" th:text="Regresar"></a>
+					</div>
+				</div>
+			</div>
+		</main>
+	</div>
+
+	
+</body>
+
+</html>
